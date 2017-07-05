@@ -3,11 +3,30 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.base64.js"></script>
-	<script src="js/popup.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/av-min.js"></script>
+
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 </head>
 <body>
 	<img id="qrcode"/>
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<h3 class="panel-title">Text on your phone</h3>
+		</div>
+		<!-- List group -->
+		<div id="app">
+			<ol class="list-group" v-if="seen">
+				<li class="list-group-item {{cls[$index % 4]}}" v-for="text in texts">
+					{{ text.text }}
+				</li>
+			</ol>
+			<p class="panel-body" v-if="!seen">No text...</p>
+		</div>
+	</div>
+
+	<script src="js/popup.js"></script>
 </body>
 </html>
